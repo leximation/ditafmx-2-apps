@@ -1,0 +1,17 @@
+
+As of 2.0.06, the DITA-FMx Book app import XSLT (bookmap2fmbook.xsl) is 
+set up to be compatible with SAXON. This is the default XSLT processor in 
+FrameMaker 13.0.1 and later. If you're using FM 13.0.1 or later, you 
+should be fine with the default setup.
+
+If you're using FM13.0.0 or earlier, you'll probably want to use the XALAN 
+version of bookmap2fmbook.xsl. Just copy the file bookmap2fmbook-XALAN.xsl
+to bookmap2fmbook.xsl.
+
+As of FM11, the maker.ini file allows you to switch between XALAN and SAXON
+XSLT processors, by changing the setting in the XSLTProcessors section. You
+may want to change this default, and if you do, be sure to choose the right
+DITA-FMx import XSLT, by copying the appropriate file to bookmap2fmbook.xsl
+
+Questions? Contact <tools@leximation.com>
+

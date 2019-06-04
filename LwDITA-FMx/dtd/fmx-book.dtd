@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!ELEMENT fm-ditabook  (fm-ditafile | fm-bookcomponent)+ >
+<!ATTLIST fm-ditabook
+	href CDATA #IMPLIED
+	format CDATA #IMPLIED
+	title CDATA #IMPLIED
+	created CDATA #IMPLIED
+	revised CDATA #IMPLIED
+	bookpartno CDATA #IMPLIED
+	edition CDATA #IMPLIED
+	isbn CDATA #IMPLIED
+	booknumber CDATA #IMPLIED
+	volume CDATA #IMPLIED
+	maintainer-person CDATA #IMPLIED
+	maintainer-org CDATA #IMPLIED
+	authorname CDATA #IMPLIED
+	copyrfirst CDATA #IMPLIED
+	copyrlast CDATA #IMPLIED
+	copyrholder CDATA #IMPLIED
+	bookowner-org CDATA #IMPLIED
+	bookowner-person CDATA #IMPLIED
+	bookrestriction CDATA #IMPLIED
+	prodname CDATA #IMPLIED
+	version CDATA #IMPLIED
+	release CDATA #IMPLIED
+	modification CDATA #IMPLIED
+	pubinfo-org CDATA #IMPLIED
+	pubinfo-completedyear CDATA #IMPLIED
+	pubinfo-completedmonth CDATA #IMPLIED
+	pubinfo-completedday CDATA #IMPLIED
+	permissions-view CDATA #IMPLIED
+	category CDATA #IMPLIED
+	xml:lang CDATA #IMPLIED
+	>
+
+<!ELEMENT fm-ditafile  ANY >
+<!ATTLIST fm-ditafile
+	href CDATA #IMPLIED
+	format CDATA #IMPLIED
+	mapelemtype CDATA #IMPLIED
+	outputclass CDATA #IMPLIED
+	platform CDATA #IMPLIED
+	product CDATA #IMPLIED
+	audience CDATA #IMPLIED
+	props CDATA #IMPLIED
+	otherprops CDATA #IMPLIED
+>
+
+<!ELEMENT fm-bookcomponent  ANY >
+
+
+<!ELEMENT fm-figuretitle 
+                     (#PCDATA | ph | b | i | u | sup | sub | image | data )* >
+<!ATTLIST fm-figuretitle 
+                     id        ID        #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     translate  (yes|no|-dita-use-conref-target)  #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     dir       (ltr|rtl|lro|rlo|-dita-use-conref-target)  #IMPLIED
+                     base      CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     xtrc      CDATA     #IMPLIED
+                     xtrf      CDATA     #IMPLIED
+                     class     CDATA     "- topic/title fmx/fm-figuretitle" >
+
+<!ELEMENT fm-figuredesc 
+                     (#PCDATA | ph | b | i | u | sup | sub | image | data )* >
+<!ATTLIST fm-figuredesc 
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     conrefend  CDATA     #IMPLIED
+                     conaction  (mark|pushafter|pushbefore|pushreplace|-dita-use-conref-target)  #IMPLIED
+                     conkeyref  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     platform  CDATA     #IMPLIED
+                     product   CDATA     #IMPLIED
+                     audience  CDATA     #IMPLIED
+                     otherprops  CDATA     #IMPLIED
+                     base      CDATA     #IMPLIED
+                     importance  (default|deprecated|high|low|normal|obsolete|optional|recommended|required|urgent|-dita-use-conref-target)  #IMPLIED
+                     rev       CDATA     #IMPLIED
+                     status    (changed|deleted|new|unchanged|-dita-use-conref-target)  #IMPLIED
+                     translate  (no|yes|-dita-use-conref-target)  #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     dir       (lro|ltr|rlo|rtl|-dita-use-conref-target)  #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     xtrc      CDATA     #IMPLIED
+                     xtrf      CDATA     #IMPLIED
+                     class     CDATA     "- topic/desc fmx/fm-figuredesc" >
+
+<!-- made body optional .. hoping it's a mistake that it's required -->
+
+<!ELEMENT topic      (title, shortdesc?, prolog?, body?) >
+<!ATTLIST topic      id        ID        #REQUIRED
+                     xmlns:ditaarch  CDATA     "http://dita.oasis-open.org/architecture/2005/"
+                     ditaarch:DITAArchVersion  CDATA     "1.3"
+                     domains   CDATA     "(hi-d) (topic h5m-d)"
+                     outputclass  CDATA     #IMPLIED
+                     dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     class     CDATA     "- topic/topic" >
+
+<!ELEMENT title      (#PCDATA | ph | b | i | u | sup | sub | image | data )* >
+<!ATTLIST title      dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/title" >
+
+<!ELEMENT shortdesc  (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST shortdesc  dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/shortdesc" >
+
+<!ELEMENT prolog     (data)* >
+<!ATTLIST prolog     
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/prolog" >
+
+<!ELEMENT body       ((p | ul | ol | dl | pre | audio | video |
+                              simpletable | fig | fn | note | data )*, section*) >
+<!ATTLIST body       dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/body" >
+
+<!ELEMENT section    (title?, (p | ul | ol | dl | pre | audio | video |
+                              simpletable | fig | fn | note | data )*) >
+<!ATTLIST section    dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/section" >
+
+<!ELEMENT p          (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST p          dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/p" >
+
+<!ELEMENT ul         (li)* >
+<!ATTLIST ul         dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/ul" >
+
+<!ELEMENT ol         (li)* >
+<!ATTLIST ol         dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/ol" >
+
+<!ELEMENT li         (p | ul | ol | dl | pre | audio | video |
+                              simpletable | fig | note | data )* >
+<!ATTLIST li         dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/li" >
+
+<!ELEMENT dl         (dlentry)* >
+<!ATTLIST dl         dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/dl" >
+
+<!ELEMENT dlentry    (dt, dd) >
+<!ATTLIST dlentry    dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/dlentry" >
+
+<!ELEMENT dt         (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST dt         dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/dt" >
+
+<!ELEMENT dd         (p | ul | ol | dl | pre | audio | video |
+                              simpletable | fig | note | data )* >
+<!ATTLIST dd         dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/dd" >
+
+<!ELEMENT pre        (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST pre        xml:space  (preserve)  "preserve"
+                     dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/pre" >
+
+<!ELEMENT simpletable 
+                     ((sthead)?, (strow+)) >
+<!ATTLIST simpletable 
+                     relcolwidth  CDATA     #IMPLIED
+                     outputclass  NMTOKEN   #IMPLIED
+                     frame     (top|bottom|topbot|all|sides|none)  #IMPLIED
+                     dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     class     CDATA     "- topic/simpletable" >
+
+<!ELEMENT sthead     (stentry*) >
+<!ATTLIST sthead     dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/sthead" >
+
+<!ELEMENT strow      (stentry*) >
+<!ATTLIST strow      dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/strow" >
+
+<!ELEMENT stentry    (p | ul | ol | dl | pre | audio | video | fn | note
+                              | data )* >
+<!ATTLIST stentry    dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/stentry" >
+
+<!ELEMENT fig        (title?, desc?, (p | ul | ol | dl | pre | audio |
+                              video | simpletable | data | image | xref  )*) >
+<!ATTLIST fig        scale     (50|60|70|80|90|100|110|120|140|160|180|200)  #IMPLIED
+                     expanse   (column|page|spread|textline)  #IMPLIED
+                     dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/fig" >
+
+<!ELEMENT desc       (#PCDATA | ph | b | i | u | sup | sub | image | data )* >
+<!ATTLIST desc       dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/desc" >
+
+<!ELEMENT ph         (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST ph         dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/ph" >
+
+<!ELEMENT image      EMPTY >
+<!ATTLIST image      href      CDATA     #IMPLIED
+                     height    CDATA     #IMPLIED
+                     width     CDATA     #IMPLIED
+                     dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/image"
+                     entity    ENTITY    #IMPLIED
+                     dpi       NMTOKEN   #IMPLIED
+                     rasterdpi  NMTOKEN   #IMPLIED
+                     alt       CDATA     #IMPLIED
+                     impsize   CDATA     #IMPLIED
+                     impby     (ref|copy)  #IMPLIED
+                     sideways  NMTOKEN   #IMPLIED
+                     impang    CDATA     #IMPLIED
+                     xoffset   CDATA     #IMPLIED
+                     yoffset   CDATA     #IMPLIED
+                     position  NMTOKEN   #IMPLIED
+                     align     NMTOKEN   #IMPLIED
+                     placement     NMTOKEN   #IMPLIED
+                     cropped   NMTOKEN   #IMPLIED
+                     float     NMTOKEN   #IMPLIED
+                     angle     CDATA     #IMPLIED
+                     bloffset  CDATA     #IMPLIED
+                     nsoffset  CDATA     #IMPLIED
+                     insetdata  CDATA     #IMPLIED >
+
+<!ELEMENT data       (#PCDATA | data )* >
+<!ATTLIST data       name      CDATA     #IMPLIED
+                     value     CDATA     #IMPLIED
+                     href      CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/data" >
+
+<!ELEMENT xref       (#PCDATA | ph | b | i | u | sup | sub | image | data )* >
+<!ATTLIST xref       href      CDATA     #IMPLIED
+                     format    CDATA     #IMPLIED
+                     scope     (local|peer|external)  #IMPLIED
+                     dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/xref" >
+
+<!ELEMENT audio      (fallback?, controls?, source*, track*) >
+<!ATTLIST audio      props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "+ topic/object h5m-d/audio" >
+
+<!ELEMENT video      (fallback?, controls?, poster?, source*, track*) >
+<!ATTLIST video      props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     height    CDATA     #IMPLIED
+                     width    CDATA     #IMPLIED
+                     iframe    (yes|no)  "no"
+                     class     CDATA     "+ topic/object h5m-d/video" >
+
+<!ELEMENT fallback   (#PCDATA | ph | b | i | u | sup | sub | image | data )* >
+<!ATTLIST fallback   dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "+ topic/desc h5m-d/fallback" >
+
+<!ELEMENT controls   EMPTY >
+<!ATTLIST controls   name      CDATA     "controls"
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "+ topic/param h5m-d/controls" >
+
+<!ELEMENT poster     EMPTY >
+<!ATTLIST poster     name      CDATA     "poster"
+                     value     CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "+ topic/param h5m-d/poster" >
+
+<!ELEMENT source     EMPTY >
+<!ATTLIST source     name      CDATA     "source"
+                     value     CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "+ topic/param h5m-d/source" >
+
+<!ELEMENT track      EMPTY >
+<!ATTLIST track      name      CDATA     "track"
+                     value     CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "+ topic/param h5m-d/track" >
+
+<!ELEMENT fn         (p | ul | ol | dl | pre | audio | video | fn | note
+                              | data )* >
+<!ATTLIST fn         dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     callout   CDATA     #IMPLIED
+                     outputclass  CDATA     #IMPLIED
+                     id        CDATA     #REQUIRED
+                     class     CDATA     "- topic/fn" >
+
+<!ELEMENT note       (p | ul | ol | dl | pre | audio | video | fn | note
+                              | data )* >
+<!ATTLIST note       dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     props     CDATA     #IMPLIED
+                     id        CDATA     #IMPLIED
+                     conref    CDATA     #IMPLIED
+                     type      (caution|warning|danger|trouble|notice|note)  "note"
+                     outputclass  CDATA     #IMPLIED
+                     class     CDATA     "- topic/note" >
+
+<!ELEMENT b          (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST b          dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     class     CDATA     "- topic/ph hi-d/b" >
+
+<!ELEMENT i          (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST i          dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     class     CDATA     "- topic/ph hi-d/i" >
+
+<!ELEMENT u          (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST u          dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     class     CDATA     "- topic/ph hi-d/u" >
+
+<!ELEMENT sup        (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST sup        dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     class     CDATA     "- topic/ph hi-d/sup" >
+
+<!ELEMENT sub        (#PCDATA | ph | b | i | u | sup | sub | image | xref
+                              | data )* >
+<!ATTLIST sub        dir       CDATA     #IMPLIED
+                     xml:lang  CDATA     #IMPLIED
+                     translate  CDATA     #IMPLIED
+                     keyref    CDATA     #IMPLIED
+                     class     CDATA     "- topic/ph hi-d/sub" >

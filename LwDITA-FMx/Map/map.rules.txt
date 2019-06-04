@@ -1,0 +1,14 @@
+fm version is "8.0";
+
+
+/*
+ * Include all ISO entity mapping rules.
+ */
+
+#include "isoall.rw"
+
+
+
+writer external dtd is public "-//OASIS//DTD XDITA Map//EN" "map.dtd";
+
+

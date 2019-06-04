@@ -1,0 +1,48 @@
+fm version is "7.1";
+
+/*
+DITA-FMx
+Leximation, Inc. 
+Copyright 2008-2014
+All Rights Reserved
+*/
+
+/*
+ * Include all ISO entity mapping rules.
+ */
+
+#include "isoall.rw"
+
+
+fm element "fm-reltablemeta" unwrap;
+fm element "fm-reltablehead" unwrap;
+fm element "fm-reltablebody" unwrap;
+
+
+element "fm-reltablemeta"
+{
+  is fm table title element;
+}
+
+element "reltable"
+{
+  is fm table element;
+  fm property page wide value is "1";
+}
+
+element "relheader" 
+{
+  is fm table row element;
+  fm property row type value is "Heading";
+}
+
+element "relrow"
+{
+  is fm table row element;
+  fm property row type value is "Body";
+}
+
+
+writer external dtd is public "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd";
+/* writer external dtd is public "-//OASIS//DTD DITA Map//EN" "map.dtd"; */
+

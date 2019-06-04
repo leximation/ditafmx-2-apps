@@ -1,0 +1,293 @@
+fm version is "7.1";
+
+/*
+DITA-FMx
+Leximation, Inc. 
+Copyright 2015
+All Rights Reserved
+*/
+
+/*
+ * Include all ISO entity mapping rules.
+ */
+
+#include "isoall.rw"
+
+fm element "fmtag" unwrap;
+/* fm variable drop; */
+
+fm element "fm-simpletablehead" unwrap;
+fm element "fm-simpletablebody" unwrap;
+
+fm element "fm-choicetablehead" unwrap;
+fm element "fm-choicetablebody" unwrap;
+
+fm element "fm-propertieshead" unwrap;
+fm element "fm-propertiesbody" unwrap;
+
+
+
+
+element "fig"
+{
+  attribute "frame" is fm attribute "frame";
+}
+
+/*
+ * Graphic Image elements image and object.
+ */
+element "image"
+{
+  is fm graphic element;
+  fm property import by reference or copy value is "ref";
+  
+  /* Rule for round-tripping "uncropped" images */
+  fm property cropped value is "0";
+
+  writer facet default
+  {
+    specify size in pt;
+  }
+  attribute "href" 
+  {
+     is fm attribute "href";
+     is fm property file;
+  }
+  attribute "align" 
+  {
+    is fm property alignment;
+    value "left" is fm property value align left;
+    value "right" is fm property value align right;
+    value "center" is fm property value align center;
+    value "current" is fm property value align center;
+  }
+  attribute "height" 
+  {
+    is fm property height;
+    is fm attribute;
+  }
+  attribute "width"
+  {
+    is fm property width;
+    is fm attribute;
+  }
+}
+
+element "table" 
+{ 
+  /* If table is a container element, use this subrule: */
+  is fm element;
+
+  /* The rest of the subrules for table are always applicable. */
+  
+  attribute "tocentry" is fm attribute;
+
+  attribute "frame"
+  {
+    is fm attribute;
+    is fm property table border ruling;
+    value "top" is fm property value top;
+    value "bottom" is fm property value bottom;
+    value "topbot" is fm property value top and bottom;
+    value "all" is fm property value all;
+    value "sides" is fm property value sides;
+    value "none" is fm property value none;
+  }
+
+  attribute "colsep" is fm property column ruling;
+  attribute "rowsep" is fm property row ruling;
+  attribute "orient" is fm attribute;
+  attribute "pgwide" is fm attribute;
+}
+
+element "tgroup"
+{
+  is fm table element;
+
+  attribute "cols" is fm property columns;
+  attribute "outputclass"
+  {
+    is fm attribute "outputclass";
+    is fm property table format;
+  }
+
+  attribute "colsep" is fm property column ruling;
+  attribute "rowsep" is fm property row ruling;
+  attribute "align" is fm attribute;
+  attribute "charoff" is fm attribute;
+  attribute "char" is fm attribute;
+  attribute "colwidth" drop;
+}
+
+element "colspec"
+{
+  is fm colspec;
+  attribute "colnum" is fm property column number;
+  attribute "colname" is fm property column name;
+  attribute "align" is fm property cell alignment type;
+  attribute "charoff" is fm property cell alignment offset;
+  attribute "char" is fm property cell alignment character;
+  attribute "colwidth" is fm property column width; 
+  attribute "colsep" is fm property column ruling;
+  attribute "rowsep" is fm property row ruling;
+}
+/* no spanspec ..
+element "spanspec"
+{
+  is fm spanspec;
+  attribute "spanname" is fm property span name;
+  attribute "namest" is fm property start column name;
+  attribute "nameend" is fm property end column name;
+  attribute "align" is fm property cell alignment type;
+  attribute "charoff" is fm property cell alignment offset;
+  attribute "char" is fm property cell alignment character;
+  attribute "colsep" is fm property column ruling;
+  attribute "rowsep" is fm property row ruling;
+}
+*/
+/*
+element "indexterm" 
+{
+ is fm marker element;
+ marker text is content;
+}
+*/
+
+element "choicetable" 
+{
+  is fm table element;
+  fm property columns value is "2";
+  attribute "relcolwidth" is fm property column widths;
+
+  attribute "frame"
+  {
+    is fm attribute;
+    is fm property table border ruling;
+    value "top" is fm property value top;
+    value "bottom" is fm property value bottom;
+    value "topbot" is fm property value top and bottom;
+    value "all" is fm property value all;
+    value "sides" is fm property value sides;
+    value "none" is fm property value none;
+  }
+}
+
+element "chhead" 
+{
+  is fm table row element;
+  fm property row type value is "Heading";
+}
+
+element "chrow" 
+{
+  is fm table row element;
+  fm property row type value is "Body";
+}
+
+element "simpletable" 
+{
+  is fm table element; 
+  attribute "relcolwidth" is fm property column widths;
+
+  attribute "frame"
+  {
+    is fm attribute;
+/*    is fm property table border ruling;
+    value "top" is fm property value top;
+    value "bottom" is fm property value bottom;
+    value "topbot" is fm property value top and bottom;
+    value "all" is fm property value all;
+    value "sides" is fm property value sides;
+    value "none" is fm property value none;
+*/
+  }
+}
+
+element "sthead" 
+{
+  is fm table row element;
+  fm property row type value is "Heading";
+}
+
+element "strow" 
+{
+  is fm table row element;
+  fm property row type value is "Body";
+}
+
+element "properties" 
+{
+  is fm table element;
+  attribute "relcolwidth" is fm property column widths;
+
+  attribute "frame"
+  {
+    is fm attribute;
+    is fm property table border ruling;
+    value "top" is fm property value top;
+    value "bottom" is fm property value bottom;
+    value "topbot" is fm property value top and bottom;
+    value "all" is fm property value all;
+    value "sides" is fm property value sides;
+    value "none" is fm property value none;
+  }
+}
+
+element "prophead" 
+{
+  is fm table row element;
+  fm property row type value is "Heading";
+}
+
+element "property" 
+{
+  is fm table row element;
+  fm property row type value is "Body";
+}
+
+element "screen"
+{
+  writer line break is 99999 characters;
+  reader line break is forced return;
+
+  attribute "frame" is fm attribute "frame";
+}
+
+element "pre"
+{
+  writer line break is 99999 characters;
+  reader line break is forced return;
+
+  attribute "frame" is fm attribute "frame";
+}
+
+element "lines"
+{
+  writer line break is 99999 characters;
+  reader line break is forced return;
+
+  attribute "frame" is fm attribute "frame";
+}
+
+element "msgblock"
+{
+  writer line break is 99999 characters;
+  reader line break is forced return;
+
+  attribute "frame" is fm attribute "frame";
+}
+
+element "codeblock"
+{
+  writer line break is 99999 characters;
+  reader line break is forced return;
+
+  attribute "frame" is fm attribute "frame";
+}
+
+element "fn" is fm footnote element "fn";
+
+writer use proportional widths;
+
+writer external dtd is public "-//OASIS//DTD DITA Learning Content//EN"
+  "learning/dtd/learningContent.dtd";

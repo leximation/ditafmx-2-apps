@@ -1,0 +1,13 @@
+
+DTD notes and observations
+
+1) topic and map @domains attribute defaults are not in sync. 
+   Assuming that map/@domains should include "(map xdita-c)" and change "(hi-d)" to "(topic hi-d)" 
+
+2) data element models differ between map and topic. map doesn't allow PCDATA and is missing 2 attributes.
+   Assuming they will be the same .. use topic model for map.
+
+3) map model doesn't include @outputclass .. topic does.
+
+4) would be nice if topicref allowed @processing-role
+

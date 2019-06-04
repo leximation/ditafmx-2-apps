@@ -1,0 +1,26 @@
+
+Formatting of <hazardstatement> elements.
+
+- controlled by Hazard table definition that uses a special
+  structural model as defined in the default DITA-FMx Book
+  application.
+- must be 2 rows x 2 cols
+
+- if both rows are "body" rows (default) ..
+  - 1st column is straddled and symbol inserted within
+  - top, left, and bottom ruling is removed form first column
+  - header label added to row 1, cell 2
+
+- if first row is a "header" row (in tpl~topicref-HAZALT.fm)
+  - header row is straddled and header label added
+  - no ruling is modified
+  - symbol added to row 2, cell 1
+
+- for both types of hazard tables, the header row coloring is
+  controlled by color definitions that use the naming 
+  convention of "hazard-<hazardtype>".
+
+- header label text is controlled by paragraph tags named
+  "hazard.head.<hazardtype>", these tags are applied to the
+  fm-hazardhead element (applied by the EDD).
+

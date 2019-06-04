@@ -1,0 +1,120 @@
+fm version is "8.0";
+
+
+/*
+ * Include all ISO entity mapping rules.
+ */
+
+#include "isoall.rw"
+
+
+fm element "fm-simpletablehead" unwrap;
+fm element "fm-simpletablebody" unwrap;
+
+
+element "fig" {
+    attribute "frame" drop;
+}
+
+
+/*
+ * Graphic Image elements image and object.
+ */
+element "image"
+{
+  is fm graphic element;
+  fm property import by reference or copy value is "ref";
+  
+  /* Rule for round-tripping "uncropped" images */
+  fm property cropped value is "0";
+
+  writer facet default
+  {
+    specify size in pt;
+  }
+  attribute "href" 
+  {
+     is fm attribute "href";
+     is fm property file;
+  }
+
+/*
+attribute "align" drop;
+attribute "placement" drop;
+
+  attribute "align" 
+  {
+    is fm property alignment;
+    value "left" is fm property value align left;
+    value "right" is fm property value align right;
+    value "center" is fm property value align center;
+    value "current" is fm property value align center;
+  }
+*/
+  attribute "height" 
+  {
+    is fm property height;
+    is fm attribute;
+  }
+  attribute "width"
+  {
+    is fm property width;
+    is fm attribute;
+  }
+}
+
+
+
+element "simpletable" 
+{
+  is fm table element; 
+/*  attribute "relcolwidth" is fm property column widths; */
+
+  attribute "outputclass"
+  {
+    is fm attribute "outputclass";
+    is fm property table format;
+  }
+attribute "frame" drop;
+/*
+  attribute "frame"
+  {
+    is fm attribute;
+    is fm property table border ruling;
+    value "top" is fm property value top;
+    value "bottom" is fm property value bottom;
+    value "topbot" is fm property value top and bottom;
+    value "all" is fm property value all;
+    value "sides" is fm property value sides;
+    value "none" is fm property value none;
+  }
+*/
+}
+
+element "sthead" 
+{
+  is fm table row element;
+  fm property row type value is "Heading";
+}
+
+element "strow" 
+{
+  is fm table row element;
+  fm property row type value is "Body";
+}
+
+element "pre"
+{
+  writer line break is 99999 characters;
+  reader line break is forced return;
+
+  attribute "frame" is fm attribute "frame";
+}
+
+
+element "fn" is fm footnote element "fn";
+
+/* writer use proportional widths;
+*/
+
+writer external dtd is public "-//OASIS//DTD XDITA Topic//EN" "topic.dtd";
